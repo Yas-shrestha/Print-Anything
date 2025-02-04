@@ -20,6 +20,7 @@ Route::get('/shop', [FrontendController::class, 'shop'])->name('shop');
 Route::get('/orders', [FrontendController::class, 'orders']);
 Route::get('/checkout', [FrontendController::class, 'checkout']);
 Route::get('/contact', [FrontendController::class, 'contact']);
+Route::get('/search', [FrontendController::class, 'search'])->name('search');
 Route::post('/contact-store', [FrontendController::class, 'contactStore'])->name('contact.store');
 
 

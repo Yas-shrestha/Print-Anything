@@ -33,6 +33,35 @@ class FrontendController extends Controller
         $products = Product::query()->paginate(16);
         return view('frontend.shop', compact('products'));
     }
+    public function search(Request $request)
+    {
+        $query = $request->input('query'); // Get search input
+        $productsQuery = Product::query();
+
+        // Always fetch products
+        $products = $productsQuery->when($query, function ($q) use ($query) {
+            $q->where('name', 'LIKE', "%{$query}%") // Search by product name
+            ; // Search by description
+        })
+            ->paginate(16);
+
+        // If logged in, fetch customized products as well
+        $customizedProducts = [];
+        if (Auth::check()) {
+            $id = Auth::user()->id;
+
+            $customizedProducts = customizedProd::query()
+                ->where('user_id', $id)
+                ->when($query, function ($q) use ($query) {
+                    $q->where('name', 'LIKE', "%{$query}%") // Search by customized product name
+                    ; // Search by description
+                })
+                ->paginate(8);
+        }
+
+        return view('frontend.search', compact('products', 'customizedProducts', 'query'));
+    }
+
     public function orders()
     {
         $orders = Orders::query()->paginate(16);

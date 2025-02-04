@@ -146,7 +146,7 @@
 
                     <h5 class="mb-3">{{ $product->name }}</h5>
 
-                    <a href="#" class="text-primary">See product details</a>
+                    <a href="#" class="text-primary">{!! $product->description !!}</a>
                     <div class="mt-3">
                         <h6>Product Color</h6>
                         <div class="d-flex gap-2">

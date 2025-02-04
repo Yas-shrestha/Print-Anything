@@ -1,8 +1,5 @@
 @extends('layouts.frontend')
 @section('container')
-    <!-- Call this script after bootstrap.bundle.min.js CDN -->
-
-    </script>
     <section id="banner" style="background: #f9f3ec">
         <div class="csontainer">
             <div class="swiper main-swiper">
