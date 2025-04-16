@@ -13,10 +13,8 @@
     <meta name="description" content="" />
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css" />
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
 
-    <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/vendor.css') }}" />
-    <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/style.css') }}" />
+    <link rel="stylesheet" type="text/css" href="{{ asset('assets/vendor/bootstrap-5.1.3/css/bootstrap.css') }}" />
 
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -52,13 +50,13 @@
         </div>
     </div>
     {{-- nav --}}
-    <header>
+    <header class="bg-light">
         <div class="container py-2">
             <div class="row py-4 pb-0 pb-sm-4 align-items-center">
                 <div class="col-sm-4 col-lg-3 text-center text-sm-start">
                     <div class="main-logo">
-                        <a href="index.html" class="fs-1">
-                            <span class="text-primary">Print</span>ifyIt
+                        <a href="index.html" class="fs-1 text-decoration-none">
+                            <span class="text-primary font-sans-serif-header">Print</span>ifyIt
                         </a>
                     </div>
                 </div>
@@ -125,88 +123,102 @@
         </div>
 
         <div class="container">
-            <nav class="main-menu d-flex navbar navbar-expand-lg">
-                <div class="d-flex d-lg-none align-items-end mt-3">
-                    <ul class="d-flex justify-content-end list-unstyled m-0">
+            <nav class="main-menu navbar navbar-expand-lg">
+                <div class="container-fluid">
 
-                        <li>
-                            <a href="#" class="mx-3" data-bs-toggle="offcanvas"
-                                data-bs-target="#offcanvasCart" aria-controls="offcanvasCart">
-                                <iconify-icon icon="mdi:cart" class="fs-4 position-relative"></iconify-icon>
-                                @if (Auth::user())
-                                    <span
-                                        class="position-absolute translate-middle badge rounded-circle bg-primary pt-2">
-                                        {{ Auth::user()->cart->count() }}
-                                    </span>
-                                @endif
-                            </a>
-                        </li>
-
-                        <li>
-                            <a href="#" class="mx-3" data-bs-toggle="offcanvas"
-                                data-bs-target="#offcanvasSearch" aria-controls="offcanvasSearch">
-                                <iconify-icon icon="tabler:search" class="fs-4"></iconify-icon>
-                            </a>
-                        </li>
-                    </ul>
-                </div>
-
-                <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas"
-                    data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-
-                <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar"
-                    aria-labelledby="offcanvasNavbarLabel">
-                    <div class="offcanvas-header justify-content-center">
-                        <button type="button" class="btn-close" data-bs-dismiss="offcanvas"
-                            aria-label="Close"></button>
-                    </div>
-
-                    <div class="offcanvas-body justify-content-between">
-
-
-                        <ul class="navbar-nav menu-list list-unstyled d-flex gap-md-3 mb-0">
-                            <li class="nav-item">
-                                <a href="/" class="nav-link {{ request()->is('/') ? 'active' : '' }}">Home</a>
-                            </li>
-
-                            <li class="nav-item">
-                                <a href="/shop"
-                                    class="nav-link {{ request()->is('shop') ? 'active' : '' }}">Shop</a>
-                            </li>
-                            @if (Auth::check() && Auth::user()->customizedProducts()->exists())
-                                <a href="/custom-products"
-                                    class="nav-link {{ request()->is('custom-products') ? 'active' : '' }}">Customized
-                                    Product</a>
-                            @endif
-
-                            <li class="nav-item">
-                                <a href="/contact"
-                                    class="nav-link {{ request()->is('contact') ? 'active' : '' }}">Contact</a>
-                            </li>
-
-                        </ul>
-
-                        <div class="d-none d-lg-flex align-items-end">
-                            <ul class="d-flex justify-content-end list-unstyled m-0">
-
-                                <li class="">
-                                    <a href="/cart" class="mx-3">
-                                        <iconify-icon icon="mdi:cart" class="fs-4 position-relative"></iconify-icon>
-                                        @if (Auth::user())
+                    {{-- Small Screen Icons --}}
+                    <div class="d-flex d-lg-none align-items-end mt-3 ms-auto">
+                        <ul class="d-flex justify-content-end list-unstyled m-0">
+                            {{-- Cart --}}
+                            <li>
+                                <a href="#" class="mx-3 position-relative" data-bs-toggle="offcanvas"
+                                    data-bs-target="#offcanvasCart" aria-controls="offcanvasCart">
+                                    <iconify-icon icon="mdi:cart" class="fs-4"></iconify-icon>
+                                    @auth
+                                        @if (Auth::user()->cart && Auth::user()->cart->count())
                                             <span
-                                                class="position-absolute translate-middle badge rounded-circle bg-primary pt-2">
+                                                class="position-absolute top-0 start-100 translate-middle badge rounded-circle bg-primary">
                                                 {{ Auth::user()->cart->count() }}
                                             </span>
                                         @endif
-                                    </a>
+                                    @endauth
+                                </a>
+                            </li>
+                            {{-- Search --}}
+                            <li>
+                                <a href="#" class="mx-3" data-bs-toggle="offcanvas"
+                                    data-bs-target="#offcanvasSearch" aria-controls="offcanvasSearch">
+                                    <iconify-icon icon="tabler:search" class="fs-4"></iconify-icon>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+
+                    {{-- Toggle for small screen --}}
+                    <button class="navbar-toggler ms-auto" type="button" data-bs-toggle="offcanvas"
+                        data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+
+                    {{-- Offcanvas menu --}}
+                    <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar"
+                        aria-labelledby="offcanvasNavbarLabel">
+                        <div class="offcanvas-header justify-content-end">
+                            <button type="button" class="btn-close" data-bs-dismiss="offcanvas"
+                                aria-label="Close"></button>
+                        </div>
+
+                        <div class="offcanvas-body justify-content-between d-flex flex-column flex-lg-row">
+                            {{-- Navigation Links --}}
+                            <ul class="navbar-nav list-unstyled d-flex flex-column flex-lg-row gap-lg-3 mb-4 mb-lg-0">
+                                <li class="nav-item">
+                                    <a href="/"
+                                        class="nav-link {{ request()->is('/') ? 'active  border-bottom border-2 border-primary pb-1 text-primary' : '' }}">Home</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="/shop"
+                                        class="nav-link {{ request()->is('shop') ? 'active  border-bottom border-2 border-primary pb-1 text-primary' : '' }}">Shop</a>
+                                </li>
+                                @auth
+                                    @if (Auth::user()->customizedProducts()->exists())
+                                        <li class="nav-item">
+                                            <a href="/custom-products"
+                                                class="nav-link {{ request()->is('custom-products') ? 'active  border-bottom border-2 border-primary pb-1 text-primary' : '' }}">
+                                                Customized Product
+                                            </a>
+                                        </li>
+                                    @endif
+                                @endauth
+                                <li class="nav-item">
+                                    <a href="/contact"
+                                        class="nav-link {{ request()->is('contact') ? 'active  border-bottom border-2 border-primary pb-1 text-primary' : '' }}">Contact</a>
                                 </li>
                             </ul>
+
+                            {{-- Large Screen Cart Icon --}}
+                            <div class="d-none d-lg-flex align-items-end">
+                                <ul class="d-flex list-unstyled m-0">
+                                    <li>
+                                        <a href="/cart" class="mx-3 position-relative">
+                                            <iconify-icon icon="mdi:cart" class="fs-4"></iconify-icon>
+                                            @auth
+                                                @if (Auth::user()->cart && Auth::user()->cart->count())
+                                                    <span
+                                                        class="position-absolute top-0 start-100 translate-middle badge rounded-circle bg-primary">
+                                                        {{ Auth::user()->cart->count() }}
+                                                    </span>
+                                                @endif
+                                            @endauth
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
                         </div>
                     </div>
+
                 </div>
             </nav>
+
         </div>
     </header>
     {{-- nav --}}
@@ -229,8 +241,8 @@
     </div>
     @yield('container')
     {{-- footer --}}
-    <footer id="footer" class="my-5">
-        <div class="container py-5 my-5">
+    <footer id="footer" class="mt-5 bg-light">
+        <div class="container py-5 my-5  ">
             <div class="row">
                 <div class="col-md-3">
                     <div class="footer-menu">
@@ -332,19 +344,16 @@
                 </div>
             </div>
         </div>
-    </footer>
+        <div id="footer-bottom">
+            <div class="container">
+                <hr class="m-0" />
 
-    <div id="footer-bottom">
-        <div class="container">
-            <hr class="m-0" />
-
-            <div class="text-center">
-                <p class="secondary-font">© 2023 Printify. All rights reserved.</p>
+                <div class="text-center">
+                    <p class="secondary-font m-0 p-3">© 2023 Printify. All rights reserved.</p>
+                </div>
             </div>
-
-
         </div>
-    </div>
+    </footer>
     {{-- footer --}}
     <script>
         document.addEventListener('DOMContentLoaded', function() {

@@ -9,7 +9,7 @@
                         <img src="{{ asset($product->products->front_img) }}" class="card-img-top" alt="...">
                         <div class="card-body">
                             <h5 class="card-title">{{ $product->name }}</h5>
-                            <h6 class="card-subtitle mb-2 text-muted ">Customization-Charge : Rs
+                            <h6 class="card-subtitle mb-2  ">Customization-Charge : Rs
                                 {{ $product->customization_charge }}</h6>
                             <div class="d-flex gap-2 W-100">
                                 @if ($product->color || $product->size)
