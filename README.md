@@ -1,6 +1,6 @@
 # Custom Clothes Designer
 
-A web application that allows users to create **custom printed clothing designs** by placing images on predefined clothing templates. Users can upload graphics, position them on the garment, resize them, and save the design configuration.
+This is a web application that allows users to create **custom printed clothing designs** by placing images on clothing templates. Users can upload graphics, position them on the garment, resize them, and save the design configuration.
 
 The application stores **design layout data using JSON**, making it easy to reproduce or edit designs later.
 
@@ -9,13 +9,6 @@ The application stores **design layout data using JSON**, making it easy to repr
 # Features
 
 ## Interactive Clothing Design
-
-Users can place custom images on clothing templates such as:
-
-- T-shirts
-- Hoodies
-- Sweatshirts
-- Other printable garments
 
 Images can be:
 
@@ -35,4 +28,4 @@ Each design is saved as a **JSON object** that stores:
 - Rotation (optional)
 - Relative scaling
 
-This makes the system **lightweight and portable**.
+This was designed while i was learning to work with laravel . While Frontend is being handeled with JSon Backend is being handeled with Laravel.
