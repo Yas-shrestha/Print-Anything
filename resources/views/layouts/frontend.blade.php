@@ -2,15 +2,15 @@
 <html lang="en">
 
 <head>
-    <title>PrintifyIt</title>
+    <title>Print-Anything</title>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="format-detection" content="telephone=no" />
     <meta name="apple-mobile-web-app-capable" content="yes" />
-    <meta name="author" content="" />
+    {{-- <meta name="author" content="" />
     <meta name="keywords" content="" />
-    <meta name="description" content="" />
+    <meta name="description" content="" /> --}}
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css" />
 
@@ -56,7 +56,7 @@
                 <div class="col-sm-4 col-lg-3 text-center text-sm-start">
                     <div class="main-logo">
                         <a href="index.html" class="fs-1 text-decoration-none">
-                            <span class="text-primary font-sans-serif-header">Print</span>ifyIt
+                            <span class="text-primary font-sans-serif-header">Print</span>-Anything
                         </a>
                     </div>
                 </div>
@@ -228,7 +228,7 @@
                 role="alert" aria-live="assertive" aria-atomic="true">
                 <div class="toast-header">
                     <strong class="me-auto">
-                        <span class="text-primary">Print</span>ify
+                        <span class="text-primary">Print</span>Anything
                     </strong>
                     <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
                 </div>
@@ -246,7 +246,7 @@
             <div class="row">
                 <div class="col-md-3">
                     <div class="footer-menu">
-                        <h3> <span class="text-primary">Print</span>ify</h3>
+                        <h3> <span class="text-primary">Print</span>Anything</h3>
                         <p class="blog-paragraph fs-6 mt-3">
                             Subscribe to our newsletter to get updates about our grand
                             offers.
